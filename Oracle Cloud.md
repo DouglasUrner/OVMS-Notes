@@ -16,10 +16,12 @@ sudo apt install build-essential
 
 Open Ports for:
 * Nginx (used to prove to Let's Encrypt (via Dehydrated) that we are who we say we are): 80
-* OVMS:
+* OVMS V2:
   * OVMS APP: 6867
   * REST API: 6869
   * OVMS MP: 6870
+* OVMS V3:
+  * 8883 (TLS)
 
 ### Configure to use SSL
 
