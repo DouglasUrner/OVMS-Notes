@@ -6,27 +6,40 @@
 
 Ubuntu
 
-### Firewall
-
-Open Ports for:
-* Nginx (used to prove to Let's Encrypt that we are who we say we are): 80
-* OVMS:
-  * OVMS APP 6867
-  * REST API: 6869
-  * OVMS MP: 6870
-
-### Configure to use SSL
-
-Nginx
-Dehydrate
-
-## Installing OVMS Server
-
 sudo apt update
 sudo apt upgrade
 reboot if necessary
 
 sudo apt install build-essential
+
+### Firewall
+
+Open Ports for:
+* Nginx (used to prove to Let's Encrypt (via Dehydrated) that we are who we say we are): 80
+* OVMS:
+  * OVMS APP: 6867
+  * REST API: 6869
+  * OVMS MP: 6870
+
+### Configure to use SSL
+
+#### Nginx
+
+#### Dehydrated
+
+Install Dehydrated: sudo apt install dehydrated
+
+Then, in `/etc/dehydrated/config`, set `WELLKNOWN="/var/www/html/.well-known/acme-challenge"`
+
+Create `/etc/dehydrated/domains.txt` with the contents: <the FQDN of your instance>.
+ 
+sudo mkdir -p /var/www/html/.well-known/acme-challenge
+ 
+
+
+## Installing OVMS Server
+
+git clone
 
 ### Database
 
