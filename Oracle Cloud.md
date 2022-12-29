@@ -23,6 +23,8 @@ Open Ports for:
 
 ### Configure to use SSL
 
+Using a Let's Encrypt certificate. To validate the certificate you'll need a webserver (hence Nginx) and Dehydrated to handle renewal of the certificate.
+
 #### Nginx
 
 #### Dehydrated
@@ -31,11 +33,17 @@ Install Dehydrated: sudo apt install dehydrated
 
 Then, in `/etc/dehydrated/config`, set `WELLKNOWN="/var/www/html/.well-known/acme-challenge"`
 
-Create `/etc/dehydrated/domains.txt` with the contents: <the FQDN of your instance>.
+Create `/etc/dehydrated/domains.txt` with the contents: "the FQDN of your instance".
  
 sudo mkdir -p /var/www/html/.well-known/acme-challenge
  
+`sudo dehydrated -c`
 
+'sudo /usr/bin/dehydrated --register --accept-terms`
+
+#### Merge the certificate
+
+Let's Encrypt delivers the certificate as two files, the OVMS server expects the certificate to be in a single file, so after renewal, you'll need to cat them together. Set up a chron entry to do this for you.
 
 ## Installing OVMS Server
 
