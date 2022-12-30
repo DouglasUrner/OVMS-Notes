@@ -29,7 +29,7 @@ Using a Let's Encrypt certificate. To validate the certificate you'll need a web
 
 #### Nginx
 
-#### Dehydrated
+#### [Dehydrated]<https://github.com/dehydrated-io/dehydrated>
 
 Install Dehydrated: sudo apt install dehydrated
 
