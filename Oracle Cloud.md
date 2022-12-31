@@ -47,6 +47,21 @@ sudo mkdir -p /var/www/html/.well-known/acme-challenge
 
 Let's Encrypt delivers the certificate as two files, the OVMS server expects the certificate to be in a single file, so after renewal, you'll need to cat them together. Set up a chron entry to do this for you.
 
+## Installing Drupal
+
+OVMS uses a Drupal 7 instance to manage user accounts.
+
+1. `cd /var/www/http`
+2. Download and extract Drupal 7: `curl D7_URL | tar -xzvf -`
+3. If you want, rename the Drupal directory.
+4. Install PHP-FPM: `sudo apt install php-fpm`
+5. Edit /etc/nginx/sites-available/default to enable the code in the "pass PHP scripts to FastCGI" section.
+   - Use the Unix domain socket, make sure that the socket name matches the socket in /var/run/php.
+6. Create an `info.php` file in the webserver root and test.
+7. Copy `sudo cp -R server_source_dir/drupal website_dir/sites/all/modules/`
+8. Install / enable the PHP modules required by Drupal (including the MySQL modules (php_mysql))
+9. Enable the openvehicles module in Drupal
+
 ## Installing OVMS Server
 
 git clone
